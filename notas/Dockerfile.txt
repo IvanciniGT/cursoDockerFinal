@@ -1,0 +1,33 @@
+docker build
+
+>> 1º El busca una imagen de contenedor base
+>> 2º Crear un contenedor temporal
+docker container create + start
+    >>> Va a ejecutar todas las cosas que yo le voy pidiendo en el Dockerfile
+        COPY
+        RUN
+>> 3º Establecer la configuración de la nueva imagen de contenedor
+        CMD
+        EXPOSE 
+>> 4º Exportar el contenedor temporal como una nueva imagen
+    
+
+Docker build
+
+CONTENEDOR TEMPORAL >>>> EJECUTA COMANDOS >>>>>>>>>> CONFIGURACION >>>> EXPORTA IMAGEN
+FROM UBUNTU              copiado /micomando.sh       CMD ["/micomando.sh"]    TAG
+                         RUN apt-get update
+                         RUN apt-get install telnet -y
+                         
+                         
+# Establece la imagen de base de nuestra imagen de contenedor
+FROM ubuntu
+
+# Copiar un archivo al contenedor: micomando.sh
+COPY micomando.sh /
+
+# Indicar el comando/ programa que quiero que se ejecute
+CMD ["/micomando.sh"]
+
+RUN apt-get update
+RUN apt-get install telnet -y

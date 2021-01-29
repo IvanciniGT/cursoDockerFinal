@@ -1,0 +1,9 @@
+version: "3.1"
+
+services:
+    mi-nginx:
+        #image: nginx
+        build: .
+        container_name: mi-nginx
+        ports:
+            - 8080:80

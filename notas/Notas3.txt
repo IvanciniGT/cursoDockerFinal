@@ -1,0 +1,71 @@
+Volumen:
+    Directorio o Archivo local (host) montado sobre el filesystem del contenedor
+    Persistencia en caso de Eliminación del contenedor
+
+Variables de entorno que podían inyectarse al crer un contenedor
+
+Docker-compose
+  Trabajar con archivos YAML >> SCM
+  Trabajo con aplicaciones multicontenedor
+  
+  
+
+YAML
+ XML
+HTML
+  Markup Language
+
+GNU
+    GNU is NOT UNIX
+YAML
+    YAML AINT Markup Language
+ 
+TAG   
+    <html>
+    </html>
+
+---------
+App Web
+------------
+    Parte WEB
+        Javascript - NodeJS
+        Java - WAS, Weblogic
+        Python - DJango
+------------
+    Base de datos
+        MariaDB
+------------
+Escalado de una aplicación: 
+    Que la aplicación pueda atender más usuarios, peticiones
+    
+    Va creciendo el numero de usuarios de la aplicación.
+    Black friday <<<<<<< 50 instalaciones
+    Ciber Monday <<<<<   40 instalaciones
+    Reyes        <<<<    20 instalaciones
+    San valentin <<      10 instalaciones
+    
+    15 Junio -       1000 peticiones al dia   ----> App Instalada  5 máquinas <<<<<<
+    Black friday - 100000 peticiones al dia   ----> App Instalada 50 máquinas
+------------
+
+Entorno de Producción - HA, Escalado
+    Cluster - Grupo /group
+        Un grupo de instalaciones de la misma aplicación
+            CLONES
+        
+
+Escalado variable:
+    - Exceso de Hierros: Alquilarlos
+        Clouds: AWS, Google cloud, IBM Cloud, AZURE
+            Terraform - IaaS, PaaS
+            Qué es un cloud? cloud computing? 
+                Conjunto de servicios que ofrece una empresa a traves de Internet
+    - Software que se encargue del escalado: 
+        Ir haciendo clones y eliminandolos de mis maquinas
+        Kubernetes, Openshift
+            
+            
+            
+            
+            
+            

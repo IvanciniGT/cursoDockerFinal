@@ -1,0 +1,21 @@
+version: "3.1"
+ 
+services:
+  jenkins: 
+    #user: ubuntu # usuario que ejecuta el contenedor
+    image: jenkins/jenkins:lts
+    ports:
+      - 8080:8080 
+      # - 50000:50000
+    volumes:
+     - /home/ubuntu/environment/jenkins_data:/var/jenkins_home
+
+    # Docker in docker
+    #- /var/run/docker.sock:/var/run/docker.sock
+    #- /usr/bin/docker:/usr/local/bin/docker
+
+    # privileged: true  # El conteneor tiene acceso a funciones avanzadas del kernel del host
+                        # modificar settings kernel
+                        # SELINUX - Enhanced Security for Linux REDHAT, fedora...
+                        # appArmor - Ubuntu
+    # user: root

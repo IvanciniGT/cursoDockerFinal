@@ -1,0 +1,19 @@
+version: "3.1"
+
+services:
+    mi-postgres: # Identificador del servicio (por ahora, lo entendemos como el contenedor)
+        container_name: mi-postgres # Nombre del contenedor
+        image: postgres:latest
+#        environment:
+#            - POSTGRES_PASSWORD=password
+#            - POSTGRES_USER=ivan
+#            - POSTGRES_DB=MIDB
+        environment:
+            POSTGRES_PASSWORD: password
+            POSTGRES_USER: ivan
+            POSTGRES_DB: MIDB
+        volumes:
+            - /home/ubuntu/environment/postgre_data:/var/lib/postgresql/data
+        ports:
+            - 5432:5432
+        restart: always

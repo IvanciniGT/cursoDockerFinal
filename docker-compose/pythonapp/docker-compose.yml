@@ -1,0 +1,41 @@
+version: "3.1"
+
+services:
+    servicio_mysql:
+        container_name: contenedor_con_mysql
+        image: mysql
+        volumes:
+            - /home/ubuntu/environment/datos/mysql:/var/lib/mysql
+#        ports:
+#            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: basededatos
+            MYSQL_USER: usuario
+            MYSQL_PASSWORD: password
+        
+    programa-python:
+        container_name: programa-python
+        build: .
+        volumes:
+            - ./wait-for-it.sh:/tmp/wait-for-it.sh
+        depends_on:
+            - servicio_mysql
+        command: ["/tmp/wait-for-it.sh", "servicio_mysql:3306", "--", "python", "./programa.py"]
+
+        environment: 
+            - DB_HOST=servicio_mysql
+            - DB_USUARIO=usuario
+            - DB_PASSWORD=password
+            # Arranca primero el contenedor mysql, pero eso no implica
+            # que realmente la BBDD esté en uso: RUINA !!!!!
+            # En las paradas: stop, down
+# docker-compose XXXX:
+# docker-compose up programa-python
+#     up:   Crear/Recrear contenedores y arrancarlos
+#     down: Para el contenedores y los destruye
+#     start:  Arrancar contenedor
+#     stop:   Detiene el contenedor
+
+#     exec: Ejecutar comando en contenedor
+#     build: Hace build de las imágenes que haya definidas en el docker-compose.yml

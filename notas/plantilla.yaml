@@ -1,0 +1,83 @@
+# Fichero: JSON ... YAML 1.2
+
+usuario: 
+    nombre: Ivan
+    edad: 42
+    email: mi@email.com
+
+# YAML
+# parejas de clave-valor
+# valor
+numero: 1283
+numero_decimal: 12.34
+numero_notacion_cientica: -3.2e-8
+valor_logico: true # false | TRUE True False FALSE YES NO no yes On Off
+texto: Esto es un texto
+otro_texto: "Esto es otro texto"
+otro_texto_mas: 'Esto es otro texto'
+textos_multilinea: Esto es un texto
+    muy largo
+textos_multilinea: |
+    Yo aqui pondria 
+    muchas lineas
+    y todo se toma como el valor del texto
+#Yo aqui pondria 
+#muchas lineas
+#y todo se toma como el valor del texto
+    
+otro_textos_multilinea: >
+    Yo aqui pondria 
+    muchas lineas
+    y todo se toma como el valor del texto
+# Yo aqui pondria muchas lineas y todo se toma como el valor del texto
+
+comando_a_ejecutar: |
+    docker container create \
+        --name mi-contenedor \
+        miimagen
+#docker container create \
+#    --name mi-contenedor \
+#    miimagen
+comando_a_ejecutar: >
+    docker container create 
+        --name mi-contenedor 
+        miimagen
+#docker container create --name mi-contenedor miimagen
+
+lista_de_valores: 
+    - valor1
+    - valor2
+    - valor3
+
+lista_de_valores: [valor1, valor2, valor3]
+
+usuario:
+    nombre: Ivan
+    primer_apellido: Osuna
+    edad: 42
+
+sistema:
+ usuarios:
+        usuario1:
+            nombre: Ivan
+            apellidos:
+                - Osuna
+                - Ayuste
+ puertos:
+    - puerto1
+    
+    
+elemento:
+    tabulador: 1
+    espacios: 4
+    
+    
+---
+usuario:
+    nombre: Ivan
+    apellido: Osuna
+---
+usuario:
+    - nombre: Ivan
+    - apellido: Osuna
+    

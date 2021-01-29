@@ -1,0 +1,144 @@
+Contendores:
+    - Poder ejecutar un programa en "cualquier maquina"
+        - Dependencias, librerias
+    - Entornos aislados de ejecución
+    - Optimización de recursos comparado con el trabajo en Maquinas virtuales
+    - Distribución de software <<<< DEVOPS
+
+Imagén de contenedor >>> Contenedor
+
+Configuración / Creación de una imagen:
+    - Puertos de escucha de la aplicación
+
+Configuración / Creación de un contenedor:
+    - Mapeo de puertos para el acceso a la aplicación
+    - Nombre
+    - Imagen base
+    
+    - Volumenes
+    - Variables de entorno
+    
+Docker es nuestra herramienta para trabajar con contenedores:
+    - Podman << Redhat. El uso de cara al usuario es identico a "docker"
+
+Arquitectura de docker:
+    - Instalación de docker:
+        - Servidor: dockerd
+                        systemctl start/stop/restart/status docker
+        - Cliente:  docker
+        
+Cliente de docker:
+ docker search ___
+
+ docker image pull ___
+    docker pull ___
+ docker image list
+    docker images
+ docker image prune --all
+ docker image rm ___
+    docker rmi ___
+ 
+ docker container create ________
+ docker container list [--all]
+    docker ps
+ docker container rm ___
+    docker rm ___
+ docker container start/stop/restart ____   
+    docker start/stop/restart ____   
+ docker logs ___
+ docker container attach ___
+    docker attach ___
+
+ docker run = pull + container create + container start [+ attach ]
+                                                            -d
+    
+ docker exec <argumentos> <contenedor> <comando>
+
+Imagen de contenedor:
+    - Carpeta con un monton de archivos dentro ( el software que ejecuta + dependencias + configuraciones... )
+        Tiene una estructura similar al filesystem de LINUX
+    - "Suele" venir siempre con todos los comandos básicos de linux
+        ls rm mkdir mv chmod
+        cat
+        bash
+            Ubuntu: apt-get
+            Debian: apt
+            Centos/Fedora: yum
+    - Las imágenes de contenedor se suelen generar basadas en una distribución LINUX
+        - No incluyen el Kernel de Linux
+    - Una imagen explicita:
+        - Que puertos usan el software que se ejecuta en esa imagen
+        - Que volumenes (que archivs/directorios) son modificados por el software que se ejecuta en esa imagen
+        - Que variables de entorno se requieren 
+        
+MYSQL
+    Parametrización:
+        Motor
+        Nombre de la base de datos
+        Usuario
+        Contraseña
+    Hay 2 estrategias para parametrizar un contenedor:
+        1- Mediante configuraciones en ficheros
+        2- Variables de entorno
+    
+    
+    
+
+Quiero un postgreSQL
+    - Persistencia
+    - Usuario:    -
+    - Contraseña: -
+    - Nombre BD:  -
+    - Accesible: 
+
+
+mkdir -p /home/ubuntu/environment/postgre_data
+chmod 777 /home/ubuntu/environment/postgre_data
+
+docker container create \
+    --name mi-postgres \
+    -e POSTGRES_PASSWORD=password \
+    -e POSTGRES_USER=ivan \
+    -e POSTGRES_DB=MIDB \
+    -v /home/ubuntu/environment/postgre_data:/var/lib/postgresql/data \
+    -p 5432:5432 \
+    postgres:latest   #     postgres
+    
+    
+    
+----------
+docker-compose up -d
+    pull + create + start + attach
+docker-compose -f docker-compose.yml up
+
+docker-compose up
+    pull + create + start + attach
+docker-compose down
+    stop + rm
+docker-compose start
+    start
+docker-compose stop
+    stop
+docker-compose restart
+    restart
+---------
+
+
+Host:
+    Ubuntu alquilada en AWS, que falla mas que qué...
+    Docker
+        Contenedor Jenkins
+            Contenedor
+
+Jenkins?
+    Servidor de Integración Continua y Despliegue Continuo
+
+Qué es Integración continua?
+    Desplegar apps sin que se corte el servicio <<<< 
+
+Contenedor
+    Jenkins, pipeline
+        Extra el codigo de un proyecto de git
+        Compilalo y empaquetalo con maven --- desarrollo ágil
+        Genera un entorno de instalación (contenedor), instala y prueba:
+            JUnit, Selenium, JMeter

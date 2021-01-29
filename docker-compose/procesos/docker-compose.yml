@@ -1,0 +1,52 @@
+version: "2.2"
+
+services:
+    miprograma:
+        image: python:3
+        container_name: miprograma
+        working_dir: /usr/src/app
+        volumes:
+            - .:/usr/src/app
+        command: python ./programa.py
+        cpus: 0.5
+#        deploy:
+#            resources:
+#                limits:
+#                    cpus: "1.0"
+#                    memory: 1g
+#                reservations:
+#                    cpus: "0.5"
+#                    memory: 500M
+# docker run -ti --rm --name miprograma -v $PWD:/usr/src/app -w /usr/src/app python:3 python ./programa.py
+
+docker run -ti --storage-opt size=100M --rm --name miprograma -v $PWD:/usr/src/app -w /usr/src/app python:3 python ./programa.py
+
+# docker 2013
+# google kubernetes 2013 ... openshift
+
+# docker -> docker swarm
+
+#docker, dockerd ---> 2013
+#docker <<< cli
+#dockerd
+#    ofrecer los servicios del docker cli
+#    Contruir imágenes
+#    Descarga de imágenes de un repositorio
+#        docker login
+#        docker logout
+#    containerd ----<
+#        Gestion de contenedores
+#        Gestión imágenes
+#        Iniciar la ejecución de contenedores
+#            runc ----<
+
+#Podman <<<< Redhat  docker-podman
+#
+#Windows <<<< v.2 Subsistema linux para windows
+
+#Kubernetes
+#    Dashboard <<< Muestro estadisticas 
+#        Modificacion: YAML
+#Ansible
+#    Ansible Tower - AWX
+#        playbook.yml <<<< git

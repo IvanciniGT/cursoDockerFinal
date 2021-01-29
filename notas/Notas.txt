@@ -1,0 +1,188 @@
+SO Linux.
+
+>> UNIX.
+    Qué era? Un sistema operativo de hace mucho !!! De pago, código privado.
+    A qué nos referimos hoy en día con UNIX? UNIX hoy en día es una ESPECIFICACIÓN (SUS, POSIX)
+    
+    Hoy en día tenemos SO certificados UNIX:
+        - Solaris -> Oracle (Sun microsystems)
+        - AIX     -> IBM
+        - HP-UX   -> HP
+        - MacOS   -> Apple
+    
+    Certificar un SO bajo UNIX cuesta BILLETON !!!!
+        - BSD <<<< Follón de narices ! Por motivos legales... Se les echa encima la gente de AT&T
+            386BSD... 386 -> Familia BSD (freeBSD, MacOS)
+        - GNU <<<< Richard Stallman
+            GNU is Not Unix
+                - Editores de texto: gedit
+                - Interfaz gráfica:  gnome
+                - Shell: bash
+                - juegos
+                - compiladores c
+            Hay una cosa que no llegaron a montar: Kernel SO <<<
+        - Linus Torwalds <- Linux <<<< Linus' Unix
+        
+    Se junta la gente de GNU con Linux >>> GNU/Linux (70%/30%)
+                                                Redhat
+                                                    Fedora
+                                                    CentOS
+                                                    OracleLinux
+                                                Debian
+                                                    Ubuntu
+                                                Suse
+    
+    Android: Kernel de Linux, pero librerias de GOOGLE.
+    
+    Docker: Diseñada para qué SO ? Linux
+                                    Hace uso de librerias que existen en el Kernel de LINUX
+            
+            ¿Podemos ejecutar docker en WINDOWS?
+                Si, gracias un truco que hizo MS: Crear una capa que mapea funciones del kernel de Linux a NT
+            
+            ¿Podemos ejecutar docker en macOS?
+                Si, pero gracias un truco MAS RESTRERO todavía. Los contenedores se ejecutan dentro de una Maquina Virtual Linux    
+            
+            
+            --------
+            Contenedor? Virtualización a nivel de SO <<< Para entendernos nos vale.
+            --------
+            Cómo instalamos habitualmente un software en un Ordenador, y cómo se ejecuta?
+            
+            
+METODO TRADICIONAL:
+
+    -----------------------------        
+        App1    |      App2    |    Virus maligno
+    -----------------------------        
+          Sistema Operativo    
+    -----------------------------        
+               HIERRO
+    -----------------------------        
+                
+    Problemas:
+        - Dependencia del SO / Máquina
+        - Las aplicaciones no se ejecutan en entornos AISLADOS
+            
+MAQUINAS VIRTUALES            
+    -----------------------------        
+        App1    |      App2   
+    -----------------------------        
+          SO    |      SO   
+    -----------------------------        
+         MV1    |      MV2
+    -----------------------------        
+             Hipervisor    (Citrix, Vmware, Virtualbox, kvm, hyperv)
+    -----------------------------        
+          Sistema Operativo    
+    -----------------------------        
+               HIERRO
+    -----------------------------        
+    
+    Ventaja:
+        - Tengo entornos AISLADOS entre mis APPS
+    Problema: 
+        - Muchas cajitas, muchas capas... más carga de trabajo: Más potencia
+
+CONTENEDORES
+    -----------------------------        
+        App1    |      App2   
+    -----------------------------        
+         C1     |      C2
+    -----------------------------        
+       Ejecutor de Contenedores
+    -----------------------------        
+     Sistema Operativo  (Kernel)  
+    -----------------------------        
+               HIERRO
+    -----------------------------     
+    
+------------------------------------------------    
+Software:
+    Servicio:     Un programa que se ejecuta en segundo plano
+                  Se ejecuta de forma indefinida
+                  Atiende peticiones realizadas por un cliente
+                  Cliente de un servicio: Otro software
+    Demonio:      Un programa que se ejecuta en segundo plano
+                  Se ejecuta de forma indefinida
+                  El demonio hace sus cosas
+    Script:       Una secuencia de comandos que realizan una labor
+                  Labor que es finita en el tiempo
+                  Admitir cierta parametrización
+                  No son interactivos
+    Comando:      Un programa que hace una tarea dada una configuración o parametros iniciales
+                  Y finaliza
+------
+    Aplicaciones: Un programa que a priori también se ejecuta de manera indefinida
+                  Pero que se ejecuta de manera interactiva con el usuario
+                  Cliente: Ser humano
+    Librerias
+    
+------------------------------------------------    
+    
+Al instalar Docker, se nos monta:
+ - un servicio: docker
+ - un cliente
+
+-------------------------
+docker - cli
+ se - cli
+
+dockerd
+    > containerd
+        > runc tomcat1
+        > runc tomcat2
+
+-----------
+Entorno local:
+    Docker <<< Docker-compose
+    
+Entorno de producción:
+    [-Docker: contanerd | crio ] <<< Kubernetes <<< Openshift (redhat)
+        - HA: High availability: Que aquello funcione "siempre"
+            - Cluster Activo/Pasivo , Activo/Activo
+        - Tolerancia fallos
+
+
+------
+Al crear un contenedor
+    Su filesystem, de donde se saca? de la imagen de contenedor
+    Se almacena en dos capas:
+        - CAPA BASE es la de la imagen de contenedor
+        - MODIFICACIONES sobre el filesystem original
+        
+-----
+2 contenedores generados desde la misma imagen
+
+BITNAMI/TOMCAT
+    filesystem 
+        /bin
+        /var
+        /etc
+        /home
+        ....
+    
+TOMCAT1
+    ls ----> veo es el filesystem de la imagen
+    Cualquier cambio en 1 contenedor genera una capa de información nueva superpuesta al filesystem de la imagen
+TOMCAT2
+    ls ----> veo es el filesystem de la imagen
+
+¿Que ocurre cuando borro un contenedor?
+    La capa de modificaciones en el filesystem se borra
+
+LOS CONTENEDORES "OUT OF THE BOX" NO TIENEN PERSISTENCIA EN LOS DATOS
+    Para conseguir persistencia DOCKER (CONTENEDORES) utilizan el concepto de VOLUMEN
+
+Qué es un volumen?
+    - Una carpeta/archivo compartido entre el host y el contenedor
+    - Esa carpeta/archivo realemnet está almacenada en el filesystem del HOST
+    - Es montada en tiempo de ejecución dentro del contenedor, en la ruta que se desee
+
+MYSQL 5.1
+    Datos en unos ficheros
+    
+MYSQL 5.2 
+
+
+SonarQube

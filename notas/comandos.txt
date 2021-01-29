@@ -1,0 +1,147 @@
+    1  whoami
+    2  pwd
+    3  docker
+    4  clear
+    5  # Debian sudo apt install docker
+    6  sudo apt install docker
+    7  sudo apt-get install docker
+    8  clear
+    9  # sudo yum install docker
+   10  docker --version
+   11  docker version
+   12  clear
+   13  ls
+   14  ls -la
+   15  docker version
+   16  clear
+   17  systemctl status docker
+   18  # sudo systemctl start docker
+   19  # sudo systemctl stop docker
+   20  # sudo systemctl restart docker
+   21  clear
+   22  docker run -p 8081:80 nginx
+   23  docker run -p 8081:80 nginx -d
+   24  docker run -p 8081:80 -d nginx 
+   25  docker run -p 8080:80 -d nginx 
+   26  docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+   27  docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
+   28  docker container list
+   29  docker container list --all
+   30  docker image list
+   31  docker container stop some-mysql
+   32  clear
+   33  docker container list
+   34  docker system prune
+   35  docker container list --all
+   36  docker image prune --all
+   37  history
+   38  clear
+   39  docker search tomcat
+   40  docker image pull bitnami/tomcat
+   41  docker image list
+   42  docker image rm bitnami/tomcat
+   43  docker images
+   44  clear
+   45  docker pull bitnami/tomcat
+   46  docker images
+   47  docker container create bitnami/tomcat
+   48  docker container create bitnami/tomcat
+   49  docker container create bitnami/tomcat
+   50  docker container list 
+   51  docker container list --all
+   52  docker container prune
+   53  docker container list --all
+   54  docker container create --name tomcat1 bitnami/tomcat
+   55  docker container create --name tomcat2 bitnami/tomcat
+   56  docker container list
+   57  docker container list --all
+   58  curl http://google.es
+   59  curl https://google.es
+   60  curl https://www.google.es/
+   61  curl https://localhost:8080
+   62  clear
+   63  docker ps --all
+   64  docker start tomcat1
+   65  docker start tomcat1
+   66  docker ps --all
+   67  docker start tomcat2
+   68  docker ps --al
+   69  docker ps 
+   70  curl http://localhost:8080
+   71  clear
+   72  clear
+   73  ifconfig
+   74  ping 172.31.9.144
+   75  ping localhost
+   76  ip a
+   77  ping 172.17.0.1
+   78  ping 172.17.0.2
+   79  ip a
+   80  ping 172.17.0.2
+   81  clear
+   82  docker ps
+   83  docker ps --all
+   84  docker start tomcat1
+   85  docker start tomcat2
+   86  curl http://localhost:8080
+   87  docker ps --all
+   88  curl http://172.17.0.2:8080
+   89  curl http://172.17.0.3:8080
+   90  curl http://172.17.0.4:8080
+   91  docker stop tomcat2
+   92  curl http://172.17.0.3:8080
+   93  docker start tomcat2
+   94  curl http://172.17.0.3:8080
+   95  docker inspect tomcat1
+   96  docker inspect tomcat1 | grep IPA
+   97  docker ps
+   98  docker stop tomcat1
+   99  docker stop tomcat2
+  100  docker stop tomcat2
+  101  docker ps
+  102  docker ps --all
+  103  docker rm tomcat1
+  104  docker container rm tomcat2
+  105  docker ps --all
+  106  docker container create --name tomcat1 -p 8080:8080 bitnami/tomcat
+  107  docker container create --name tomcat2 -p 8080:8080 bitnami/tomcat
+  108  docker start tomcat1
+  109  docker start tomcat2
+  110  docker container rm tomcat2
+  111  docker container create --name tomcat2 -p 0.0.0.0:8081:8080 bitnami/tomcat
+  112  docker start tomcat2
+  113  history+
+  114  history
+  115  docker ps
+  116  docker container create --name tomcat2 -p 0.0.0.0:8081:8080 -p 8443:8443 bitnami/tomcat
+  117  docker stop tomcat2
+  118  docker rm tomcat2
+  119  docker container create --name tomcat2 -p 0.0.0.0:8081:8080 -p 8443:8443 bitnami/tomcat
+  120  docker start tomcat2
+  121  docker ps
+  122  curl http://172.17.0.2:8080
+  123  curl http://localhost:8080
+  124  curl http://localhost:8080
+  125  curl http://localhost:8080
+  126  docker ps
+  127  curl http://172.17.0.3:8080
+  128  docker ps
+  129  curl http://localhost:8081
+  130  curl http://localhost:8080
+  131  #curl http://localhost:8080
+  132  #curl http://localhost:8081
+  133  #curl http://172.17.0.2:8080
+  134  clear
+  135  docker start tomcat1
+  136  docker logs tomcat1
+  137  docker logs tomcat1
+  138  docker logs tomcat1
+  139  docker logs tomcat1
+  140  docker logs tomcat1
+  141  docker logs tomcat1
+  142  docker logs tomcat1
+  143  docker logs tomcat1
+  144  docker logs tomcat1
+  145  docker attach tomcat1
+  146  docker attach tomcat1
+  147  history > comandos.txt

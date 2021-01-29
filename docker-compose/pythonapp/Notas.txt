@@ -1,0 +1,25 @@
+Python
+MySQL
+
+>>> python 2 y 3
+>>> mysql
+>>> driver: 
+    miprograma - driver - bd
+
+------
+1º A quien le mando la app tiene python?
+2º A quien le mando la app tiene mysql?
+3º Hay incompatibilidades
+4º Prod. 
+    Docker:
+        Entorno aislado de ejecución
+        Docker swarm, kubernetes
+5º Cliente final
+-------
+
+docker-compose.yaml
+    - Contenedor MySQL
+    - Contenedor Programa:
+        Imagen propia basada en Python
+            Driver BD
+            mi programa
